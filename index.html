@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Webpage</title>
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="theme-toggle" title="Toggle dark mode">
+      <span class="theme-emoji" id="sun-emoji" aria-label="Light mode" style="opacity:1;">🌞</span>
+      <input type="checkbox" id="retro-toggle" style="display:none;">
+      <span class="theme-emoji" id="moon-emoji" aria-label="Dark mode" style="opacity:1;">🌚</span>
+    </div>
+    <script>
+      const toggle = document.getElementById('retro-toggle');
+      const sun = document.getElementById('sun-emoji');
+      const moon = document.getElementById('moon-emoji');
+      function updateTheme() {
+        document.body.classList.toggle('dark', toggle.checked);
+        sun.style.opacity = toggle.checked ? 0.5 : 1;
+        moon.style.opacity = toggle.checked ? 1 : 0.5;
+      }
+      sun.onclick = function() { toggle.checked = false; updateTheme(); }
+      moon.onclick = function() { toggle.checked = true; updateTheme(); }
+      toggle.onchange = updateTheme;
+    </script>
+    <header>
+        <h1>Victor Prince N J</h1>
+        <hr>
+        <nav>
+            <ul class="submenu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#bookshelf">Bookshelf</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="about" class="content-area">
+            <h2>About Me</h2>
+            <p>Hello! I'm glad you're here. This is a simple webpage created to share a bit about myself and my interests.</p>
+        </section>
+        <section id="projects" class="content-area">
+            <h2>Projects</h2>
+            <p>Here you can find some of the projects I've worked on.</p>
+        </section>
+        <section id="blog" class="content-area">
+            <h2>Blog</h2>
+            <p>Check out my thoughts and writings on various topics.</p>
+        </section>
+        <section id="bookshelf" class="content-area">
+            <h2>Bookshelf</h2>
+            <p>A place where I review the books I read.</p>
+        </section>
+    </main>
+</body>
+</html>
