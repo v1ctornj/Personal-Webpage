@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bookshelf</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/menu-page.css">
+</head>
+<body>
+  <div class="theme-toggle" title="Toggle dark mode">
+    <span class="theme-emoji" id="sun-emoji" aria-label="Light mode" style="opacity:1;">🌞</span>
+    <input type="checkbox" id="retro-toggle" style="display:none;">
+    <span class="theme-emoji" id="moon-emoji" aria-label="Dark mode" style="opacity:0.5;">🌚</span>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggle = document.getElementById('retro-toggle');
+      const sun = document.getElementById('sun-emoji');
+      const moon = document.getElementById('moon-emoji');
+
+      // On load, check localStorage
+      if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark');
+        toggle.checked = true;
+        sun.style.opacity = 0.5;
+        moon.style.opacity = 1;
+      } else {
+        document.body.classList.remove('dark');
+        toggle.checked = false;
+        sun.style.opacity = 1;
+        moon.style.opacity = 0.5;
+      }
+
+      function updateTheme() {
+        document.body.classList.toggle('dark', toggle.checked);
+        sun.style.opacity = toggle.checked ? 0.5 : 1;
+        moon.style.opacity = toggle.checked ? 1 : 0.5;
+        // Save preference
+        localStorage.setItem('darkMode', toggle.checked);
+      }
+      sun.onclick = function() { toggle.checked = false; updateTheme(); }
+      moon.onclick = function() { toggle.checked = true; updateTheme(); }
+      toggle.onchange = updateTheme;
+    });
+  </script>
+  <main>
+    <h1>Bookshelf</h1>
+    <hr class="dash">
+    <nav>
+      <ul class="menu-subnav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+   
+  </main>
+</body>
+</html>
